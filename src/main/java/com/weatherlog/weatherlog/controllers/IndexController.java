@@ -1,5 +1,7 @@
 package com.weatherlog.weatherlog.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,17 +13,18 @@ import org.springframework.web.servlet.ModelAndView;
 import java.sql.Date;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/")
 public class IndexController {
+
+    Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @GetMapping
     public String getUI(Model model){
         return "index";
     }
 
-    @PostMapping
-    @ResponseBody
+    @PostMapping(path = "/")
     public String onPost(String location, Double temperature, String comment ){
-        return location + " " + temperature + " " + comment;
+        return "index";
     }
 }

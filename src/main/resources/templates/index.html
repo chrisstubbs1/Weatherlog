@@ -20,15 +20,15 @@
         </header>
         <div class="main">
             <h1>Tell us what happened in your neck of the woods today.</h1>
-            <form class="needs-validation" id="weForm" method="post">
+            <form id="weForm" name="weatherEventForm" method="post" action="https://localhost:8080/api/weatherevents">
                 <label for="inputLocation">Location</label>
-                <input type="text" class="form-control" id="inputLocation" aria-describedby="emailHelp"  placeholder="Enter location of the weather event" required>
+                <input type="text" name="location" class="form-control" id="inputLocation" aria-describedby="emailHelp"  placeholder="Enter location of the weather event" >
                 <label for="inputTemp">Temperature</label>
-                <input type="number" class="form-control" id="inputTemp" aria-describedby="emailHelp" placeholder="Enter temp during the weather event" required>
+                <input type="number" name="temperature" class="form-control" id="inputTemp" aria-describedby="emailHelp" placeholder="Enter temp during the weather event" >
                 <label for="inputDate">Date</label>
-                <input type="date" class="form-control" id="inputDate" aria-describedby="emailHelp" placeholder="Enter date of the weather event" required>
+                <input type="date" name="" class="form-control" id="inputDate" aria-describedby="emailHelp" placeholder="Enter date of the weather event" >
                 <label for="inputComment">Comment</label>
-                <textarea type="text" class="form-control" id="inputComment" aria-describedby="emailHelp" placeholder="Leave a comment" rows="3"></textarea>
+                <textarea class="form-control" name="comment" id="inputComment" aria-describedby="emailHelp" placeholder="Leave a comment" rows="3"></textarea>
                 <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
             </form>
         </div>
