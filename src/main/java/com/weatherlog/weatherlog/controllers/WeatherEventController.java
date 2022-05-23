@@ -1,31 +1,37 @@
 package com.weatherlog.weatherlog.controllers;
 
-import com.weatherlog.weatherlog.dao.WeatherEventDao;
+import com.weatherlog.weatherlog.dao.WeatherEventService;
 import com.weatherlog.weatherlog.models.WeatherEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RequestMapping(path = "/api/weatherevents")
 @RestController
 public class WeatherEventController {
 
     @Autowired
-    private WeatherEventDao weatherEventDao;
+    private WeatherEventService weatherEventService;
 
     @GetMapping
     private List<WeatherEvent> getWeatherEvents(){
-        return weatherEventDao.getWeatherEvents();
+        return weatherEventService.getAllWeatherEvents();
+    }
+
+    @PostMapping
+    private void addWeatherEvent(@RequestBody WeatherEvent weatherEventToAdd){
+        weatherEventService.addWeatherEvent(weatherEventToAdd);
     }
 
     @GetMapping(path = "/{id}")
-    private WeatherEvent getWeatherEventById(@PathVariable UUID id){
-        return weatherEventDao.getWeatherEventById(id);
+    private WeatherEvent getWeatherEventById(@PathVariable Long id){
+        return weatherEventService.getWeatherEventById(id);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    private void deleteWeatherEventById(@PathVariable Long id){
+        weatherEventService.removeWeatherEventById(id);
     }
 
 }

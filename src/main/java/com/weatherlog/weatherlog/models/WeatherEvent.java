@@ -1,23 +1,30 @@
 package com.weatherlog.weatherlog.models;
 
 import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @Data
+@Table
+@Entity
 public class WeatherEvent {
 
     private String location;
     private double temperature;
     private Date date;
     private String comment;
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
 
-    public WeatherEvent(String location, double temperature, Date date, String comment) {
+    protected WeatherEvent(){}
+
+    public WeatherEvent(String location, double temperature, String comment) {
         this.location = location;
         this.temperature = temperature;
-        this.date = date;
+        this.date = new Date();
         this.comment = comment;
-        this.id = UUID.randomUUID();
     }
 }
