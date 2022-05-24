@@ -1,51 +1,53 @@
-html{
+html {
     width: 100%;
+    height: 100%;
 }
 
-body{
+body {
     font-family: 'Macondo', cursive;
     width: 100%;
     height: 100%;
 }
 
-.bucket{
+.bucket {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: .5fr 1fr .5fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto auto;
     grid-template-areas: 
-        "image header ."
-        ". main .";
+        ". header ."
+        ". main ."
+        ". . .";
     background: linear-gradient(
-        to bottom right, #DD95F7 0%, #9AADF9 50%, #7FC9D9 100%
+            to bottom right, #DD95F7 0%, #9AADF9 50%, #7FC9D9 100%
     );
 }
 
-header{
+header {
     color: #FFF;
     grid-area: header;
 }
 
-.image{
+.image {
     width: 80%;
     height: 80%;
     grid-area: image;
     clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
 
-header > h1{
+header > h1 {
     font-size: 5em;
     display: grid;
     place-items: center;
 }
 
-.main{
+.main {
     grid-area: main;
     color: #fff;
 
 }
 
-.main > h1{
-    size: 1em;
+.main > h1 {
+    font-size: 1em
 }
