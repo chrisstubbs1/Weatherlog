@@ -20,15 +20,16 @@
         </header>
         <div class="main">
             <h1>Tell us what happened in your neck of the woods today.</h1>
+            <a th:href="@{/events}" class="link-primary">Check out events here.</a>
             <form id="weForm" name="weatherEventForm" method="post" action="https://localhost:8080/api/weatherevents">
                 <label for="inputLocation">Location</label>
-                <input type="text" name="location" class="form-control" id="inputLocation" aria-describedby="emailHelp"  placeholder="Enter location of the weather event" >
+                <input type="text" name="location" class="form-control form-control-sm" id="inputLocation" aria-describedby="emailHelp"  placeholder="Enter location of the weather event" >
                 <label for="inputTemp">Temperature</label>
-                <input type="number" name="temperature" class="form-control" id="inputTemp" aria-describedby="emailHelp" placeholder="Enter temp during the weather event" >
+                <input type="number" name="temperature" class="form-control form-control-sm" id="inputTemp" aria-describedby="emailHelp" placeholder="Enter temp during the weather event" >
                 <label for="inputDate">Date</label>
-                <input type="date" name="" class="form-control" id="inputDate" aria-describedby="emailHelp" placeholder="Enter date of the weather event" >
+                <input type="date" name="" class="form-control form-control-sm" id="inputDate" aria-describedby="emailHelp" placeholder="Enter date of the weather event" >
                 <label for="inputComment">Comment</label>
-                <textarea class="form-control" name="comment" id="inputComment" aria-describedby="emailHelp" placeholder="Leave a comment" rows="3"></textarea>
+                <textarea class="form-control form-control-sm" name="comment" id="inputComment" aria-describedby="emailHelp" placeholder="Leave a comment" rows="3"></textarea>
                 <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
             </form>
         </div>

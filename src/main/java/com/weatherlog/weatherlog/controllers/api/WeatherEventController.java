@@ -1,5 +1,6 @@
-package com.weatherlog.weatherlog.controllers;
+package com.weatherlog.weatherlog.controllers.api;
 
+import com.weatherlog.weatherlog.controllers.ui.IndexController;
 import com.weatherlog.weatherlog.dao.WeatherEventService;
 import com.weatherlog.weatherlog.models.WeatherEvent;
 import org.slf4j.Logger;
