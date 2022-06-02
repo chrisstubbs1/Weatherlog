@@ -40,9 +40,16 @@ header{
 
 .main{
     grid-area: main;
+    overflow-y: scroll;
+
 }
 
 .weRow{
     cursor: pointer;
+}
+
+table{
+    overflow-y: scroll;
+
 }
 
