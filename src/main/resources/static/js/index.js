@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.forEach(((value, key) => data[key] = value))
 
         const jsonData = JSON.stringify(data)
-
+        console.log(jsonData)
         fetch('http://localhost:8080/api/weatherevents/', {
             method: 'POST',
             body: jsonData,

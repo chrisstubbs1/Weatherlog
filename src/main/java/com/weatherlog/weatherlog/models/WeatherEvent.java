@@ -2,6 +2,7 @@ package com.weatherlog.weatherlog.models;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -11,7 +12,7 @@ public class WeatherEvent {
 
     private String location;
     private double temperature;
-    private Date date;
+    private LocalDate date;
     private String comment;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -19,10 +20,10 @@ public class WeatherEvent {
 
     protected WeatherEvent(){}
 
-    public WeatherEvent(String location, double temperature, String comment) {
+    public WeatherEvent(String location, double temperature, String comment, LocalDate date) {
         this.location = location;
         this.temperature = temperature;
-        this.date = new Date();
+        this.date = date;
         this.comment = comment;
     }
 }
