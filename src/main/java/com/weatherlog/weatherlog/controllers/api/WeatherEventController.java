@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 public class WeatherEventController {
 
-    Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private WeatherEventService weatherEventService;

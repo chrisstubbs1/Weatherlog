@@ -25,40 +25,46 @@
                     <img th:src="@{images/cardpic.jpg}" class="card-img-top" alt="umbrellas">
                     <div class="card-body">
                         <h5 class="card-title">Sign Up</h5>
-                        <form>
+                        <form id="signUpForm" method="post" action="https://localhost:8080/api/users">
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="fName">First Name</label>
-                                    <input type="text" class="form-control" id="fName" placeholder="Enter First Name">
+                                    <input type="text" class="form-control" id="fName" name="firstName"
+                                           placeholder="Enter First Name">
                                 </div>
                                 <div class="form-group col">
                                     <label for="lName">Last Name</label>
-                                    <input type="text" class="form-control" id="lName" placeholder="Enter Last Name">
+                                    <input type="text" class="form-control" id="lName" name="lastName"
+                                           placeholder="Enter Last Name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="uName">Userame</label>
-                                <input type="text" class="form-control" id="uName" placeholder="Enter Username">
+                                <input type="text" class="form-control" id="uName" name="username"
+                                       placeholder="Enter Username">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter Your Email">
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="Enter Your Email">
                             </div>
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           placeholder="Enter Password">
                                 </div>
                                 <div class="form-group col">
                                     <label for="confirmPassword">Last Name</label>
-                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                           name="confirmPassword" placeholder="Confirm Password">
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label for="bDay">Birthday</label>
-                                <input type="date" class="form-control" id="bDay">
+                                <input type="date" class="form-control" name="birthday" id="bDay">
                             </div>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -67,5 +73,7 @@
         <div class="col-md-2"></div>
     </div>
 </div>
+<script th:src="@{js/signup.js}"></script>
+
 </body>
 </html>

@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    let weatherEventForm = document.getElementById('weForm')
-    weatherEventForm.onsubmit = (e) => {
+    let signUpForm = document.getElementById('signUpForm')
+    signUpForm.onsubmit = (e) => {
         e.preventDefault()
 
-        let formData = new FormData(document.getElementById('weForm'))
-
+        let formData = new FormData(document.getElementById('signUpForm'))
         const data = {}
+
         formData.forEach(((value, key) => data[key] = value))
 
         const jsonData = JSON.stringify(data)
-        fetch('http://localhost:8080/api/weatherevents/', {
+
+        fetch('http://localhost:8080/api/users/', {
             method: 'POST',
             body: jsonData,
             headers: {
@@ -19,5 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(e => console.log(e))
     }
 
-}, false)
 
+}, false)

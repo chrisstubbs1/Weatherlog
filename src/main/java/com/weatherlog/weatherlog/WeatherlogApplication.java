@@ -4,12 +4,16 @@ import com.weatherlog.weatherlog.dao.UserRepository;
 import com.weatherlog.weatherlog.dao.WeatherEventsRepository;
 import com.weatherlog.weatherlog.models.User;
 import com.weatherlog.weatherlog.models.WeatherEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @SpringBootApplication
 public class WeatherlogApplication {
@@ -20,7 +24,7 @@ public class WeatherlogApplication {
 
     //seed some sample data for the database
     @Bean
-    public CommandLineRunner demo(WeatherEventsRepository weatherEventsRepository, UserRepository userRepository) {
+    public CommandLineRunner demo(WeatherEventsRepository weatherEventsRepository, UserRepository userRepository, ApplicationContext applicationContext) {
         return (args) -> {
             // save a few events
             weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 77, "Stormy night in Macon", LocalDate.now()));

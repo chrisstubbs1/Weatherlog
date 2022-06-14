@@ -1,6 +1,7 @@
 package com.weatherlog.weatherlog.models;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDate;
