@@ -1,14 +1,19 @@
 package com.weatherlog.weatherlog.controllers.api;
 
 import com.weatherlog.weatherlog.dao.UserService;
+import com.weatherlog.weatherlog.dto.UserDto;
 import com.weatherlog.weatherlog.models.User;
-import com.weatherlog.weatherlog.utilities.validation.UserValidation;
-import com.weatherlog.weatherlog.utilities.validation.UserValidationService;
+import org.apache.tomcat.jni.Local;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -18,8 +23,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    @Autowired
-    UserValidationService userValidationService;
 
     @GetMapping
     public List<User> getAllUsers() {
@@ -34,17 +37,29 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(@RequestBody User user) {
-        UserValidation.ValidationResult result = userValidationService.validate(user);
+    public ResponseEntity<String> addUser(RequestEntity<User> entity) {
 
-        if (result.equals(UserValidation.ValidationResult.SUCCESS)){
-            logger.info("Added a new user.");
-            userService.addUser(user);
+        User user = entity.getBody();
 
-            return;
-        }
+        userService.addUser(user);
+        logger.info("User {} Added.", user.getId());
 
-        logger.info("Could not add new user.");
-        throw new IllegalStateException(result.name());
+        return ResponseEntity
+                .created(URI.create(String.format("/api/users/%d", user.getId())))
+                .build();
+
     }
+
+//    private User toEntity(UserDto userDto) {
+//        User user = new User();
+//
+//        user.setFirstName(userDto.getFirstName());
+//        user.setLastName(userDto.getLastName());
+//        user.setUsername(userDto.getUsername());
+//        user.setEmail(userDto.getEmail());
+//        user.setBirthDate(userDto.getBirthDate());
+//        user.setPassword(userDto.getPassword());
+//
+//        return user;
+//    }
 }

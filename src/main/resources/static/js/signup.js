@@ -17,8 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
-        }).catch(e => console.log(e))
-    }
+        }).then(response => {
+            if (response.status >= 200 && response.status <= 299){
+                alert("User successfully added")
+                return
+            }
 
+            alert("Probably unsuccessful.")
+        })
+            .catch(e => console.log(e))
+    }
 
 }, false)

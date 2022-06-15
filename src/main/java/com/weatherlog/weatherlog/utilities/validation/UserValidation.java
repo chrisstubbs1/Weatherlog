@@ -1,5 +1,6 @@
 package com.weatherlog.weatherlog.utilities.validation;
 
+import com.weatherlog.weatherlog.dto.UserDto;
 import com.weatherlog.weatherlog.models.User;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.regex.Pattern;
 import static com.weatherlog.weatherlog.utilities.validation.UserValidation.*;
 import static com.weatherlog.weatherlog.utilities.validation.UserValidation.ValidationResult.*;
 
-public interface UserValidation extends Function<User, ValidationResult> {
+public interface UserValidation extends Function<UserDto, ValidationResult> {
 
     static UserValidation isFirstNameValid() {
         return user -> user.getFirstName().length() > 2 ?
@@ -39,17 +40,17 @@ public interface UserValidation extends Function<User, ValidationResult> {
 
     static UserValidation isAgeValid() {
         return user -> Period.between(user.getBirthDate(), LocalDate.now()).getYears() > 3 ?
-                SUCCESS : AGE_INVALID;
+            SUCCESS : AGE_INVALID;
     }
 
-    static ValidationResult validate(User user) {
+    static ValidationResult validateAll(UserDto userDto) {
         return isFirstNameValid()
                 .and(isLastNameValid())
                 .and(isUsernameValid())
                 .and(isEmailValid())
                 .and(isPasswordValid())
                 .and(isAgeValid())
-                .apply(user);
+                .apply(userDto);
     }
 
     default UserValidation and(UserValidation other) {

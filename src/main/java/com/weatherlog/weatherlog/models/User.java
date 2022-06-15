@@ -1,9 +1,14 @@
 package com.weatherlog.weatherlog.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -18,7 +23,7 @@ public class User {
     private String lastName;
     private String username;
     private String email;
-    private LocalDate birthDate;
+    private String birthday;
     private String password;
 
     public User() {
@@ -26,14 +31,13 @@ public class User {
     }
 
     public User(String firstName, String lastName, String username, String email, String password,
-                LocalDate birthDate) {
+                String birthDateAsString) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.birthDate = birthDate;
+        this.birthday = birthDateAsString;
     }
-
 
 }

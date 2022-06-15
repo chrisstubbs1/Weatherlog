@@ -37,7 +37,7 @@ public class WeatherlogApplication {
 
             //make some sample users
             userRepository.save(new User("Chris", "Stubbs", "chrisstubbs1",
-                    "chris.stubbs@neenah.com", "password", LocalDate.now()));
+                    "chris.stubbs@neenah.com", "password", "2011-01-09"));
 
         };
     }
