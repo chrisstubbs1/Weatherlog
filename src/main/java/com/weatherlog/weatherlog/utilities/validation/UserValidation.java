@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.function.Function;
-import java.util.regex.Pattern;
 
 import static com.weatherlog.weatherlog.utilities.validation.UserValidation.*;
 import static com.weatherlog.weatherlog.utilities.validation.UserValidation.ValidationResult.*;

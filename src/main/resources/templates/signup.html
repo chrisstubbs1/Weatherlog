@@ -16,42 +16,51 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+
 <div class="container-fluid">
     <div class="row h-100">
         <div class="col-md-2"></div>
-        <div class="col-md-8 d-flex justify-content-center align-items-center flex-column ">
+        <div class="col-md-8 d-flex justify-content-center align-items-center flex-column  ">
             <div class="d-flex flex-column justify-content-center w-50">
-                <img th:src="@{images/signuppic.jpg}" class="img-fluid " alt="umbrellas">
+                <img th:src="@{images/signuppic.jpg}" class="img-fluid rounded-top " alt="umbrellas">
             </div>
-            <div class="form-container d-flex flex-column justify-content-center w-50">
-
+            <div class="form-container rounded-bottom d-flex flex-column justify-content-center w-50">
                 <div class="row">
                     <div class="col">
                         <form id="signUpForm" method="post" action="https://localhost:8080/api/users"
-                              class="needs-validation p-2" novalidate>
+                              class="needs-validation  p-3" novalidate>
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="fName">First Name</label>
                                     <input type="text" class="form-control" id="fName" name="firstName"
                                            placeholder="Enter First Name" required>
+                                    <div class="invalid-feedback">
+                                        First name must be at least 2 characters.
+                                    </div>
                                 </div>
                                 <div class="form-group col">
                                     <label for="lName">Last Name</label>
                                     <input type="text" class="form-control" id="lName" name="lastName"
                                            placeholder="Enter Last Name" required>
+                                    <div class="invalid-feedback">
+                                        Last name must be at least 2 characters.
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-2">
                                 <label for="uName">Userame</label>
                                 <input type="text" class="form-control" id="uName" name="username"
                                        placeholder="Enter Username" required>
+                                <div class="invalid-feedback">
+                                    Username must be at least 4 characters.
+                                </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-2">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                        placeholder="Enter Your Email" required>
                             </div>
-                            <div class="row">
+                            <div class="row mt-2">
                                 <div class="form-group col">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control password" id="password" name="password"
@@ -60,17 +69,20 @@
                                         Passwords must match.
                                     </div>
                                 </div>
-                                <div class="form-group col">
+                                <div class="form-group co mt-2l">
                                     <label for="confirmPassword">Confirm Password</label>
                                     <input type="password" class="form-control password" id="confirmPassword"
                                            name="confirmPassword" placeholder="Confirm Password" min="8" required>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-2">
                                 <label for="bDay">Birthday</label>
                                 <input type="date" class="form-control" name="birthday" id="bDay" required>
+                                <div class="invalid-feedback">
+                                    Must be older than 2 to sign up.
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-2" id="submitBtn">Sign up</button>
+                            <button type="submit" class="btn btn-primary mt-3" id="submitBtn">Sign up</button>
                         </form>
                     </div>
                 </div>
@@ -79,29 +91,7 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    // (function () {
-    //     'use strict';
-    //     window.addEventListener('load', function () {
-    //         // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    //         let forms = document.getElementsByClassName('needs-validation');
-    //         // Loop over them and prevent submission
-    //         let validation = Array.prototype.filter.call(forms, function (form) {
-    //             form.addEventListener('submit', function (event) {
-    //                 event.preventDefault()
-    //
-    //                 if (form.checkValidity() === false) {
-    //                     event.preventDefault();
-    //                     event.stopPropagation();
-    //                 }
-    //
-    //                 form.classList.add('was-validated');
-    //             }, false);
-    //         });
-    //     }, false);
-    // })();
-</script>
+
 <script th:src="@{js/signup.js}"></script>
 </body>
 </html>
