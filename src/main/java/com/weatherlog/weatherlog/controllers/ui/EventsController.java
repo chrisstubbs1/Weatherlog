@@ -1,6 +1,6 @@
 package com.weatherlog.weatherlog.controllers.ui;
 
-import com.weatherlog.weatherlog.dao.WeatherEventService;
+import com.weatherlog.weatherlog.services.WeatherEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

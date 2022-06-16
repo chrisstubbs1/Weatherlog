@@ -1,9 +1,9 @@
 package com.weatherlog.weatherlog.controllers.api;
 
-import com.weatherlog.weatherlog.dao.UserService;
-import com.weatherlog.weatherlog.dto.UserDto;
 import com.weatherlog.weatherlog.models.User;
-import org.apache.tomcat.jni.Local;
+import com.weatherlog.weatherlog.services.UserService;
+import com.weatherlog.weatherlog.utilities.validation.UserValidation;
+import com.weatherlog.weatherlog.utilities.validation.UserValidationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.time.LocalDate;
 import java.util.List;
+
+import static com.weatherlog.weatherlog.utilities.validation.UserValidation.*;
 
 @RestController
 @RequestMapping(path = "/api/users")
@@ -23,6 +24,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    UserValidationService userValidationService;
 
     @GetMapping
     public List<User> getAllUsers() {
@@ -40,13 +43,20 @@ public class UserController {
     public ResponseEntity<String> addUser(RequestEntity<User> entity) {
 
         User user = entity.getBody();
+        ValidationResult userValidationResult = userValidationService.validate(user);
 
-        userService.addUser(user);
-        logger.info("User {} Added.", user.getId());
+        if (userValidationResult.equals(ValidationResult.SUCCESS)){
+            userService.addUser(user);
+            logger.info("User {} Added.", user.getId());
 
-        return ResponseEntity
-                .created(URI.create(String.format("/api/users/%d", user.getId())))
-                .build();
+            return ResponseEntity
+                    .created(URI.create(String.format("/api/users/%d", user.getId())))
+                    .build();
+
+        }
+
+        logger.info("Could not add user. Error: {}", userValidationResult.name());
+        return new ResponseEntity<String>("Could not process request.", HttpStatus.BAD_REQUEST);
 
     }
 

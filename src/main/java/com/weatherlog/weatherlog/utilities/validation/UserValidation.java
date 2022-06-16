@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import static com.weatherlog.weatherlog.utilities.validation.UserValidation.*;
 import static com.weatherlog.weatherlog.utilities.validation.UserValidation.ValidationResult.*;
 
-public interface UserValidation extends Function<UserDto, ValidationResult> {
+public interface UserValidation extends Function<User, ValidationResult> {
 
     static UserValidation isFirstNameValid() {
         return user -> user.getFirstName().length() > 2 ?
@@ -26,7 +26,7 @@ public interface UserValidation extends Function<UserDto, ValidationResult> {
     }
 
     static UserValidation isUsernameValid() {
-        return user -> user.getUsername().length() > 4 ?
+        return user -> user.getUsername().length() >= 4 ?
                 SUCCESS : USERNAME_INVALID;
     }
 
@@ -39,18 +39,21 @@ public interface UserValidation extends Function<UserDto, ValidationResult> {
     }
 
     static UserValidation isAgeValid() {
-        return user -> Period.between(user.getBirthDate(), LocalDate.now()).getYears() > 3 ?
-            SUCCESS : AGE_INVALID;
+
+        return user -> {
+            LocalDate userBirthDate = LocalDate.parse(user.getBirthday());
+            return Period.between(userBirthDate, LocalDate.now()).getYears() >= -1 ? SUCCESS : AGE_INVALID;
+        };
     }
 
-    static ValidationResult validateAll(UserDto userDto) {
+    static ValidationResult validateAll(User user) {
         return isFirstNameValid()
                 .and(isLastNameValid())
                 .and(isUsernameValid())
                 .and(isEmailValid())
                 .and(isPasswordValid())
                 .and(isAgeValid())
-                .apply(userDto);
+                .apply(user);
     }
 
     default UserValidation and(UserValidation other) {

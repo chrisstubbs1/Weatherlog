@@ -1,5 +1,6 @@
-package com.weatherlog.weatherlog.dao;
+package com.weatherlog.weatherlog.services;
 
+import com.weatherlog.weatherlog.dao.WeatherEventsRepository;
 import com.weatherlog.weatherlog.models.WeatherEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

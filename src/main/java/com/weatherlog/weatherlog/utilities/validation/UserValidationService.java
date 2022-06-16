@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserValidationService {
 
-    public UserValidation.ValidationResult validate(UserDto userDto) {
-        return UserValidation.validateAll(userDto);
+    public UserValidation.ValidationResult validate(User user) {
+        return UserValidation.validateAll(user);
     }
 
 }
