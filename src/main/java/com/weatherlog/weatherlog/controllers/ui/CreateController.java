@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class IndexController {
+@RequestMapping("/create")
+public class CreateController {
 
     Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @GetMapping
     public String getUI(Model model){
-        return "splashpage";
+        return "create";
     }
 
 }
