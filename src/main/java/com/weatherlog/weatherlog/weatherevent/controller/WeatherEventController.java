@@ -1,7 +1,8 @@
-package com.weatherlog.weatherlog.controllers.api;
+package com.weatherlog.weatherlog.weatherevent.controller;
 
-import com.weatherlog.weatherlog.services.WeatherEventService;
-import com.weatherlog.weatherlog.models.WeatherEvent;
+import com.weatherlog.weatherlog.weatherevent.services.WeatherEventService;
+import com.weatherlog.weatherlog.weatherevent.model.WeatherEvent;
+import com.weatherlog.weatherlog.weatherevent.validation.WeatherEventValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,8 @@ public class WeatherEventController {
 
     @Autowired
     private WeatherEventService weatherEventService;
+    @Autowired
+    private WeatherEventValidationService weatherEventValidationService;
 
     @GetMapping
     private List<WeatherEvent> getWeatherEvents(){

@@ -1,6 +1,6 @@
-package com.weatherlog.weatherlog.dao;
+package com.weatherlog.weatherlog.user.dao;
 
-import com.weatherlog.weatherlog.models.User;
+import com.weatherlog.weatherlog.user.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.weatherlog.weatherlog.models;
+package com.weatherlog.weatherlog.weatherevent.model;
 
 import lombok.Data;
 import javax.persistence.*;

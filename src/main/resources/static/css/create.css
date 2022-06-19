@@ -9,11 +9,25 @@ html {
 }
 
 body {
-    font-family: 'Macondo', cursive;
     width: 100%;
     height: 100%;
 }
 
-.form-container{
+.form-container {
 
+}
+
+.bg {
+    background: url("../images/createimage.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    font-family: 'Source Code Pro', monospace;
+}
+
+label {
+    color: #fff;
 }

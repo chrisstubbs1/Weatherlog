@@ -1,19 +1,16 @@
 package com.weatherlog.weatherlog;
 
-import com.weatherlog.weatherlog.dao.UserRepository;
-import com.weatherlog.weatherlog.dao.WeatherEventsRepository;
-import com.weatherlog.weatherlog.models.User;
-import com.weatherlog.weatherlog.models.WeatherEvent;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.weatherlog.weatherlog.user.dao.UserRepository;
+import com.weatherlog.weatherlog.weatherevent.dao.WeatherEventsRepository;
+import com.weatherlog.weatherlog.user.model.User;
+import com.weatherlog.weatherlog.weatherevent.model.WeatherEvent;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 @SpringBootApplication
 public class WeatherlogApplication {

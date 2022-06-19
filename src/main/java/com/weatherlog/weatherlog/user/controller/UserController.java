@@ -1,9 +1,9 @@
-package com.weatherlog.weatherlog.controllers.api;
+package com.weatherlog.weatherlog.user.controller;
 
-import com.weatherlog.weatherlog.models.User;
-import com.weatherlog.weatherlog.services.UserService;
-import com.weatherlog.weatherlog.utilities.validation.UserValidation;
-import com.weatherlog.weatherlog.utilities.validation.UserValidationService;
+import com.weatherlog.weatherlog.user.model.User;
+import com.weatherlog.weatherlog.user.services.UserService;
+import com.weatherlog.weatherlog.user.validation.UserValidationService;
+import com.weatherlog.weatherlog.validation.ValidationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
-
-import static com.weatherlog.weatherlog.utilities.validation.UserValidation.*;
 
 @RestController
 @RequestMapping(path = "/api/users")
@@ -43,9 +41,9 @@ public class UserController {
     public ResponseEntity<String> addUser(RequestEntity<User> entity) {
 
         User user = entity.getBody();
-        ValidationResult userValidationResult = userValidationService.validate(user);
+        ValidationResult result = userValidationService.validateAll(user);
 
-        if (userValidationResult.equals(ValidationResult.SUCCESS)){
+        if (result.isValid()){
             userService.addUser(user);
             logger.info("User {} Added.", user.getId());
 
@@ -55,7 +53,7 @@ public class UserController {
 
         }
 
-        logger.info("Could not add user. Error: {}", userValidationResult.name());
+        logger.info("Could not add user. Error: {}", result.getReason());
         return new ResponseEntity<String>("Could not process request.", HttpStatus.BAD_REQUEST);
 
     }

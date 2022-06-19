@@ -1,4 +1,4 @@
-package com.weatherlog.weatherlog.dto;
+package com.weatherlog.weatherlog.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

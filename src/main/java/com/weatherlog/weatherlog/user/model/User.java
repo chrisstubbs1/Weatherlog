@@ -1,6 +1,7 @@
-package com.weatherlog.weatherlog.models;
+package com.weatherlog.weatherlog.user.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.weatherlog.weatherlog.utilities.modelutils.Requestable;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @Data
 @Table
 @Entity
-public class User {
+public class User implements Requestable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
