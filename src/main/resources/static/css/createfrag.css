@@ -18,6 +18,11 @@ body {
     height: 100%;
 }
 
+.main-area{
+    display: grid;
+    place-items: center;
+}
+
 label {
     color: #fff;
 }

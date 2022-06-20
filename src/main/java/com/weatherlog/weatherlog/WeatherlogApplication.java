@@ -24,13 +24,13 @@ public class WeatherlogApplication {
     public CommandLineRunner demo(WeatherEventsRepository weatherEventsRepository, UserRepository userRepository, ApplicationContext applicationContext) {
         return (args) -> {
             // save a few events
-            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 77, "Stormy night in Macon", LocalDate.now()));
-            weatherEventsRepository.save(new WeatherEvent("Flagstaff, Az", 86, "Dry and humid day here!", LocalDate.now()));
+            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 77, "Stormy night in Macon", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Flagstaff, Az", 86, "Dry and humid day here!", LocalDate.now(), 1L));
             weatherEventsRepository.save(new WeatherEvent("Atlanta, Ga", 73, "Perfect afternoon." +
-                    " Not a cloud in the sky", LocalDate.now()));
-            weatherEventsRepository.save(new WeatherEvent("Orlando, Fl", 72, "Overcast day", LocalDate.now()));
-            weatherEventsRepository.save(new WeatherEvent("Birmingham, Al", 81, "Humid day. Rained in the morning.", LocalDate.now()));
-            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now()));
+                    " Not a cloud in the sky", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Orlando, Fl", 72, "Overcast day", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Birmingham, Al", 81, "Humid day. Rained in the morning.", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now(), 1L));
 
             //make some sample users
             userRepository.save(new User("Chris", "Stubbs", "chrisstubbs1",
