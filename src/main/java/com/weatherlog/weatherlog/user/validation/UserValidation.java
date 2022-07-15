@@ -39,11 +39,12 @@ public interface UserValidation extends Function<User, ValidationResult> {
     }
 
     static UserValidation isAgeValid() {
+        return holds(user -> convertDate(user), "Invalid age");
+    }
 
-        return holds(user -> {
-            LocalDate userBirthDate = LocalDate.parse(user.getBirthday());
-            return Period.between(userBirthDate, LocalDate.now()).getYears() >= -1;
-        }, "Invalid age");
+    static boolean convertDate(User user) {
+        LocalDate userBirthDate = LocalDate.parse(user.getBirthday());
+        return Period.between(userBirthDate, LocalDate.now()).getYears() >= -1;
     }
 
     static ValidationResult validateAll(User user) {

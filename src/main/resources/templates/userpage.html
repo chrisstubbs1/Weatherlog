@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,7 @@
         <div class="user-nav rounded col-md-4 d-flex flex-column justify-content-evenly">
 
             <div class="p-3">
-                <h1 class="text-white">John Doe</h1>
+                <h1 class="text-white" th:text="${username}"></h1>
             </div>
 
             <div class="list-group">
@@ -36,16 +36,23 @@
                 <button type="button" class="list-group-item list-group-item-action" id="btn-event" >Event Feed</button>
                 <button type="button" class="list-group-item list-group-item-action" id="btn-settings">Settings</button>
             </div>
+            <div sec:authorize="isAuthenticated()" class="align-self-end">
+                <a href="javascript: document.logoutForm.submit()">Sign out</a>
+                <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+<!--                    <input hidden type="submit" value="Sign Out" />-->
+                    <button type="submit" class="btn btn-primary">Log out</button>
 
-            <button class="btn btn-primary align-self-end">Log out</button>
+                </form>
+            </div>
+<!--            <button class="btn btn-primary align-self-end">Log out</button>-->
         </div>
-        <div class="main-area col-md-8 d-flex justify-content-center flex-column">
-            <div th:insert="frags/createfrag :: create"></div>
+        <div class="main-area col-md-8 h-100">
+            <div class="w-100 h-50" th:insert="frags/createfrag :: create"></div>
         </div>
     </div>
+
 </div>
 <script th:src="@{js/create.js}"></script>
 <script th:src="@{js/userpage.js}"></script>
-
 </body>
 </html>

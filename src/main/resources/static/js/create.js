@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.forEach(((value, key) => data[key] = value))
 
         const jsonData = JSON.stringify(data)
-        fetch('http://localhost:8080/api/users/', {
+        fetch('http://localhost:8080/api/weatherevents/', {
             method: 'POST',
             body: jsonData,
             headers: {
@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }).then(response => {
             if (response.status >= 200 && response.status <= 299) {
-                alert("Account created successfully!")
+                alert("Weather event created successfully!")
                 // document.getElementById('exampleModal').click()
                 return
             }
 
-            alert("Account could not be created.")
+            alert("Could not create weather event.")
         })
             .catch(e => console.log(e))
     }

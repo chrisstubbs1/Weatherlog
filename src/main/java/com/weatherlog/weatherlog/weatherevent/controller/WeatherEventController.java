@@ -35,16 +35,11 @@ public class WeatherEventController {
     public ResponseEntity<String> addWeatherEvent(RequestEntity<WeatherEvent> entity){
 
         WeatherEvent weatherEvent = entity.getBody();
-        //set usr id here
+//        weatherEvent.setCreatorId();
         ValidationResult result = weatherEventValidationService.validateAll(weatherEvent);
 
         if (result.isValid()){
-            weatherEventService.addWeatherEvent(weatherEvent);
-            logger.info("Weather Event {} Added.", weatherEvent.getId());
-
-            return ResponseEntity
-                    .created(URI.create(String.format("/api/users/%d", weatherEvent.getId())))
-                    .build();
+            return postWeatherEvent(weatherEvent);
         }
 
         logger.info("Could not add weather event. Error: {}", result.getReason().get());
@@ -61,4 +56,12 @@ public class WeatherEventController {
         weatherEventService.removeWeatherEventById(id);
     }
 
+    private ResponseEntity<String> postWeatherEvent(WeatherEvent weatherEvent) {
+        weatherEventService.addWeatherEvent(weatherEvent);
+        logger.info("Weather Event {} Added.", weatherEvent.getId());
+
+        return ResponseEntity
+                .created(URI.create(String.format("/api/users/%d", weatherEvent.getId())))
+                .build();
+    }
 }

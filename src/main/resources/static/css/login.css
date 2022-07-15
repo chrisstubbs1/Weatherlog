@@ -16,30 +16,19 @@ body {
 .container-fluid {
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-            to bottom right, #DD95F7 0%, #9AADF9 50%, #7FC9D9 100%
-    );
 }
-
-.image-container {
-
-    /*background-image: url("../images/loginpic.jpg");*/
-    /*background-size: cover;*/
-}
-
 
 .form-container {
-    background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) 22%, rgba(120,49,20,1) 100%);
-    opacity: .8;
 }
 
 .bg{
-    background: url("../images/loginpic.jpg");
+    background: url("../images/cool-background.png");
     background-size: cover;
-    opacity: .8;
+    width: 100%;
+    height: 100%;
 }
 
 label{
     color: #FFFFFF;
 }
+

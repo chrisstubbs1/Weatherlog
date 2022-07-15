@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{css/signup.css}" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" th:href="@{https:/fonts.gstatic.com}" crossorigin/>
-    <link th:href="@{https://fonts.googleapis.com/css2?family=Macondo&display=swap}" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Staatliches&display=swap"
+          rel="stylesheet">
     <title>Sign Up</title>
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css}" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -17,14 +21,13 @@
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="bg container-fluid">
     <div class="row h-100">
         <div class="col-md-2"></div>
         <div class="col-md-8 d-flex justify-content-center align-items-center flex-column  ">
-            <div class="d-flex flex-column justify-content-center w-50">
-                <img th:src="@{images/signuppic.jpg}" class="img-fluid rounded-top " alt="umbrellas">
-            </div>
-            <div class="form-container rounded-bottom d-flex flex-column justify-content-center w-50">
+            <h1 class="text-white">Sign Up</h1>
+
+            <div class="form-container rounded d-flex flex-column justify-content-center w-50">
                 <div class="row">
                     <div class="col">
                         <form id="signUpForm" method="post" action="https://localhost:8080/api/users"

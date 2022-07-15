@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{css/feed.css}" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Staatliches&display=swap"
+          rel="stylesheet">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js}"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="bg container-fluid overflow-scroll " th:fragment="feed">
+    <div class="row h-100">
+        <div class="col d-flex justify-content-center">
+            <div class="wrapper d-flex flex-column">
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;"  th:each="weatherevent : ${weatherevents}">
+                    <div class="card-header" th:text="Username"></div>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${weatherevent.getLocation()}"></h5>
+                        <p class="card-text" th:text="${weatherevent.getComment()}"></p>
+                        <p class="card-text" th:text="${weatherevent.getCreatorId()}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

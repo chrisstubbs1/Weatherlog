@@ -31,6 +31,10 @@ public class WeatherlogApplication {
             weatherEventsRepository.save(new WeatherEvent("Orlando, Fl", 72, "Overcast day", LocalDate.now(), 1L));
             weatherEventsRepository.save(new WeatherEvent("Birmingham, Al", 81, "Humid day. Rained in the morning.", LocalDate.now(), 1L));
             weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now(), 1L));
+            weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now(), 1L));
 
             //make some sample users
             userRepository.save(new User("Chris", "Stubbs", "chrisstubbs1",

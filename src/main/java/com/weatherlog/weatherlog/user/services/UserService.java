@@ -2,6 +2,7 @@ package com.weatherlog.weatherlog.user.services;
 
 import com.weatherlog.weatherlog.user.dao.UserRepository;
 import com.weatherlog.weatherlog.user.model.User;
+import com.weatherlog.weatherlog.weatherevent.model.WeatherEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,9 @@ public class UserService {
 
         return users;
     }
+//    public List<WeatherEvent> usersWeatherEvents(Long userId) {
+//
+//    }
 
     public User getUserById(Long id) {
         return userRepository.findById(id).get();
