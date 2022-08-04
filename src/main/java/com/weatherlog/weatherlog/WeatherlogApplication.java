@@ -7,12 +7,13 @@ import com.weatherlog.weatherlog.weatherevent.model.WeatherEvent;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class WeatherlogApplication {
 
     public static void main(String[] args) {
@@ -37,8 +38,14 @@ public class WeatherlogApplication {
             weatherEventsRepository.save(new WeatherEvent("Macon, Ga", 49, "Stormy day in Macon", LocalDate.now(), 1L));
 
             //make some sample users
-            userRepository.save(new User("Chris", "Stubbs", "chrisstubbs1",
-                    "chris.stubbs@neenah.com", "password", "2011-01-09"));
+            userRepository.save(new User("Chssris", "Stubbs", "chrisstubbs1",
+                    "chris.stubbs@neenah.cokm", "password", "2011-01-09"));
+            userRepository.save(new User("Chrjjis", "Stubbs", "thottivelli",
+                    "chris.stubbs@neenakh.com", "password", "2011-01-09"));
+            userRepository.save(new User("Chriks", "Stubbs", "gracie342",
+                    "chris.stubbs@neejnah.com", "password", "2011-01-09"));
+            userRepository.save(new User("Chsris", "Stubbs", "baxter123",
+                    "chris.stubbs@nejenah.com", "password", "2011-01-09"));
 
         };
     }

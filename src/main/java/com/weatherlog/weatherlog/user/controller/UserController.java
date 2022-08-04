@@ -1,5 +1,6 @@
 package com.weatherlog.weatherlog.user.controller;
 
+import com.weatherlog.weatherlog.exception.WeatherlogException;
 import com.weatherlog.weatherlog.user.model.User;
 import com.weatherlog.weatherlog.user.services.UserService;
 import com.weatherlog.weatherlog.user.validation.UserValidationService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/users")
@@ -39,22 +41,21 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<String> addUser(RequestEntity<User> entity) {
-
         User user = entity.getBody();
+        //make sure the user's information is valid before being saved to the database.
         ValidationResult result = userValidationService.validateAll(user);
 
-        if (result.isValid()){
-            userService.addUser(user);
-            logger.info("User {} Added.", user.getId());
-
-            return ResponseEntity
-                    .created(URI.create(String.format("/api/users/%d", user.getId())))
-                    .build();
-
+        if (!result.isValid()) {
+            logger.error("Could not add user. Error: {}", result.getReason().get());
+            throw new WeatherlogException("Sorry, we could not add the user.");
         }
 
-        logger.info("Could not add user. Error: {}", result.getReason());
-        return new ResponseEntity<String>("Could not process request.", HttpStatus.BAD_REQUEST);
+        userService.addUser(user);
+        logger.info("User {} Added.", user.getId());
+
+        return ResponseEntity
+                .created(URI.create(String.format("/api/users/%d", user.getId())))
+                .build();
 
     }
 

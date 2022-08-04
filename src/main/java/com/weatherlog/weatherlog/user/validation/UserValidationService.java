@@ -1,14 +1,20 @@
 package com.weatherlog.weatherlog.user.validation;
 
 import com.weatherlog.weatherlog.user.model.User;
+import com.weatherlog.weatherlog.user.services.UserService;
 import com.weatherlog.weatherlog.validation.ValidationResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserValidationService {
 
+    @Autowired
+    UserService userService;
+
+
     public ValidationResult validateAll(User user) {
-        return UserValidation.validateAll(user);
+        return UserValidation.validateAllUserFields(user, userService);
     }
 
     public ValidationResult isFistNameValid(User user){
@@ -34,4 +40,6 @@ public class UserValidationService {
     public ValidationResult isAgeValid(User user) {
         return UserValidation.isAgeValid().apply(user);
     }
+
+//    public ValidationResult isUsernameTaken(User user, UserService userService) {return UserValidation.isUsernameTaken(user, userService);}
 }

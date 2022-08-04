@@ -2,6 +2,7 @@ package com.weatherlog.weatherlog.user.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ import java.util.HashSet;
 @Data
 @Table
 @Entity
+@ToString
 public class User {
 
     @Id
